@@ -9,9 +9,10 @@ import Hero from "@/components/Hero";
 import Pricing from "@/components/Pricing";
 import Testimonials from "@/components/Testimonials";
 import Video from "@/components/Video";
-import { Inter } from "@next/font/google";
+import { Inter, Castoro } from "@next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
+const castoro = Castoro({ weight: "400", subsets: ["latin"] });
 
 export default function Home() {
   return (
@@ -19,12 +20,12 @@ export default function Home() {
       <ScrollUp />
       <Hero />
       <Features />
-      <Video />
+      {/*<Video />
       <Brands />
       <AboutSectionOne />
       <AboutSectionTwo />
       <Testimonials />
-      <Pricing />
+  <Pricing />*/}
       <Blog />
       <Contact />
     </>

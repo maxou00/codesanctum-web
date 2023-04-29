@@ -11,6 +11,9 @@ module.exports = {
       center: true,
       padding: "1rem",
     },
+    fontFamily: {
+      'heading': ['"Bruno Ace SC"', 'sans-serif']
+    },
     colors: {
       current: "currentColor",
       transparent: "transparent",
