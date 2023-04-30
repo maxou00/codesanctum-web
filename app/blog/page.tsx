@@ -6,11 +6,11 @@ const Blog = () => {
   return (
     <>
       <Breadcrumb
-        pageName="Blog Grid"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius eros eget sapien consectetur ultrices. Ut quis dapibus libero."
+        pageName="Your Go-To Source for All Things Coding"
+        description="Explore our latest articles on coding, technology, and programming principles. Join our community of learners and elevate your skills."
       />
 
-      <section className="pt-[120px] pb-[120px]">
+      <section className="pb-[120px] pt-[120px]">
         <div className="container">
           <div className="-mx-4 flex flex-wrap justify-center">
             {blogData.map((blog) => (
