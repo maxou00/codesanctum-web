@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
 import Link from "next/link";
 
@@ -13,24 +14,24 @@ const Footer = () => {
             <div className="w-full px-4 md:w-1/2 lg:w-4/12 xl:w-5/12">
               <div className="mb-12 max-w-[360px] lg:mb-16">
                 <Link href="/" className="mb-8 inline-block">
-                  <Image
-                    src="images/logo/logo-2.svg"
-                    alt="logo"
-                    className="w-full dark:hidden"
-                    width={140}
-                    height={30}
-                  />
-                  <Image
+                  <img
                     src="images/logo/logo.svg"
                     alt="logo"
-                    className="hidden w-full dark:block"
-                    width={140}
-                    height={30}
+                    className="w-[96px] dark:hidden"
                   />
+                  <img
+                    src="images/logo/logo-2.svg"
+                    alt="logo"
+                    className="hidden w-[96px] dark:block"
+                  />
+                  <h1 className="font-heading text-2xl text-dark dark:text-white">
+                    CodeSanctum
+                  </h1>
                 </Link>
                 <p className="mb-9 text-base font-medium leading-relaxed text-body-color">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Integer lobortis.
+                  CodeSanctum is a sanctuary for aspiring coders, providing them
+                  with the resources and guidance to hone their skills and
+                  unlock their potential.
                 </p>
                 <div className="flex items-center">
                   <a
@@ -101,14 +102,14 @@ const Footer = () => {
                 <ul>
                   <li>
                     <a
-                      href="/"
+                      href="/blog"
                       className="mb-4 inline-block text-base font-medium text-body-color hover:text-primary"
                     >
                       {" "}
                       Blog{" "}
                     </a>
                   </li>
-                  <li>
+                  {/*<li>
                     <a
                       href="/"
                       className="mb-4 inline-block text-base font-medium text-body-color hover:text-primary"
@@ -116,10 +117,10 @@ const Footer = () => {
                       {" "}
                       Pricing{" "}
                     </a>
-                  </li>
+                  </li>*/}
                   <li>
                     <a
-                      href="/"
+                      href="/about"
                       className="mb-4 inline-block text-base font-medium text-body-color hover:text-primary"
                     >
                       {" "}
@@ -138,7 +139,7 @@ const Footer = () => {
                 <ul>
                   <li>
                     <a
-                      href="/"
+                      href="/legal/terms-of-service"
                       className="mb-4 inline-block text-base font-medium text-body-color hover:text-primary"
                     >
                       {" "}
@@ -147,14 +148,14 @@ const Footer = () => {
                   </li>
                   <li>
                     <a
-                      href="/"
+                      href="/legal/privacy-policy"
                       className="mb-4 inline-block text-base font-medium text-body-color hover:text-primary"
                     >
                       {" "}
                       Privacy Policy{" "}
                     </a>
                   </li>
-                  <li>
+                  {/*<li>
                     <a
                       href="/"
                       className="mb-4 inline-block text-base font-medium text-body-color hover:text-primary"
@@ -162,7 +163,7 @@ const Footer = () => {
                       {" "}
                       Refund Policy{" "}
                     </a>
-                  </li>
+                </li>*/}
                 </ul>
               </div>
             </div>
@@ -175,29 +176,11 @@ const Footer = () => {
                 <ul>
                   <li>
                     <a
-                      href="/"
+                      href="/contact"
                       className="mb-4 inline-block text-base font-medium text-body-color hover:text-primary"
                     >
                       {" "}
-                      Open Support Ticket{" "}
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/"
-                      className="mb-4 inline-block text-base font-medium text-body-color hover:text-primary"
-                    >
-                      {" "}
-                      Terms of Use{" "}
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/"
-                      className="mb-4 inline-block text-base font-medium text-body-color hover:text-primary"
-                    >
-                      {" "}
-                      About{" "}
+                      Talk to the Guardians{" "}
                     </a>
                   </li>
                 </ul>
@@ -208,7 +191,10 @@ const Footer = () => {
         <div className="bg-primary/10 py-8">
           <div className="container">
             <p className="text-center text-base text-body-color dark:text-white">
-              Template by UIdeck and <a href="https://nextjstemplates.com" rel="nofollow noopener">Next.js Templates</a>
+              Powered by {" "}
+              <a href="https://www.softwaiz.co" rel="nofollow noopener">
+                Softwaiz
+              </a>
             </p>
           </div>
         </div>
@@ -286,7 +272,7 @@ const Footer = () => {
             </defs>
           </svg>
         </div>
-        <div className="absolute left-0 bottom-24 z-[-1]">
+        <div className="absolute bottom-24 left-0 z-[-1]">
           <svg
             width="79"
             height="94"

@@ -32,3 +32,8 @@
     @apply opacity-100;
   }
 }
+
+
+.head {
+  font-family: "Bruno Ace SC", "poppins", sans-serif;
+}
