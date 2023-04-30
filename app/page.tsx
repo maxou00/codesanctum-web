@@ -1,5 +1,5 @@
-import AboutSectionOne from "@/components/About/AboutSectionOne";
-import AboutSectionTwo from "@/components/About/AboutSectionTwo";
+import AboutOurOrigins from "@/components/About/AboutOurOrigins";
+import AboutOurPhilosophy from "@/components/About/AboutOurPhilosophy";
 import Blog from "@/components/Blog";
 import Brands from "@/components/Brands";
 import ScrollUp from "@/components/Common/ScrollUp";

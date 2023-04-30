@@ -1,16 +1,20 @@
-import AboutSectionOne from "@/components/About/AboutSectionOne";
-import AboutSectionTwo from "@/components/About/AboutSectionTwo";
+import AboutCommunityBuilding from "@/components/About/AboutCommunityBuilding";
+import AboutOurOrigins from "@/components/About/AboutOurOrigins";
+import AboutOurPersonalizedLearning from "@/components/About/AboutOurPersonalizedLearning";
+import AboutOurPhilosophy from "@/components/About/AboutOurPhilosophy";
 import Breadcrumb from "@/components/Common/Breadcrumb";
 
 const AboutPage = () => {
   return (
     <>
       <Breadcrumb
-        pageName="About Page"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius eros eget sapien consectetur ultrices. Ut quis dapibus libero."
+        pageName="Your digital Sanctuary"
+        description="Discover the history and vision behind CodeSanctum, the ultimate learning sanctuary for coders"
       />
-      <AboutSectionOne />
-      <AboutSectionTwo />
+      <AboutOurOrigins />
+      <AboutOurPhilosophy />
+      <AboutOurPersonalizedLearning />
+      <AboutCommunityBuilding />
     </>
   );
 };
