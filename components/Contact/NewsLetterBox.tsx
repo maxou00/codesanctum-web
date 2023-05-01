@@ -1,4 +1,65 @@
+/* eslint-disable react/no-unescaped-entities */
+import {
+  SubscribeToNewsletterMutation,
+  SubscribeToNewsletterMutationVariables,
+} from "@/core/gql/graphql";
+import { MUTATION_SUBSCRIBE_TO_NEWSLETTER } from "@/core/mutations";
+import { SubscribeToNewsLetterSchema } from "@/validations/newsletter";
+import { useMutation } from "@apollo/client";
+import { FormEvent, useCallback, useId, useState } from "react";
+import { toast } from "react-hot-toast";
+import Modal from "../Modals/base";
+import { Blocks } from "react-loader-spinner";
+
 const NewsLetterBox = () => {
+  const [subscribe, subscribeResult] = useMutation<
+    SubscribeToNewsletterMutation,
+    SubscribeToNewsletterMutationVariables
+  >(MUTATION_SUBSCRIBE_TO_NEWSLETTER);
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const id = useId();
+
+  const onSubmitMessage = useCallback(
+    (ev: FormEvent) => {
+      ev.preventDefault();
+      if (subscribeResult.loading) {
+        return;
+      }
+      let validation = SubscribeToNewsLetterSchema.safeParse({
+        name,
+        email,
+      });
+      if (validation.success === true) {
+        subscribe({
+          variables: {
+            data: {
+              ...validation.data,
+            },
+          },
+        }).then((res) => {
+          if (res.data.createNewsletterSubscription.id) {
+            setName("");
+            setEmail("");
+            setShowModal(true);
+          } else {
+            //// toast here
+            toast.error(
+              "The failed to receive your email. Can you try again ?",
+              { id }
+            );
+          }
+        });
+      } else {
+        console.log(validation.error.flatten().fieldErrors);
+        toast.error("Please fill correctly the fields.", { id });
+      }
+    },
+    [subscribeResult.loading, name, email, subscribe, id]
+  );
+
   return (
     <div
       className="wow fadeInUp relative z-10 rounded-md bg-primary/[3%] p-8 dark:bg-primary/10 sm:p-11 lg:p-8 xl:p-11"
@@ -11,16 +72,24 @@ const NewsLetterBox = () => {
         Stay in the loop with the latest news, features, and updates from
         CodeSanctum
       </p>
-      <form>
+      <form onSubmit={onSubmitMessage}>
         <input
           type="text"
           name="name"
+          value={name}
+          onChange={(ev) => {
+            setName(ev.target.value);
+          }}
           placeholder="Enter your name"
           className="mb-4 w-full rounded-md border border-body-color border-opacity-10 px-6 py-3 text-base font-medium text-body-color placeholder-body-color outline-none focus:border-primary focus:border-opacity-100 focus-visible:shadow-none dark:border-white dark:border-opacity-10 dark:bg-black focus:dark:border-opacity-50"
         />
         <input
           type="email"
           name="email"
+          value={email}
+          onChange={(ev) => {
+            setEmail(ev.target.value);
+          }}
           placeholder="Enter your email"
           className="mb-4 w-full rounded-md border border-body-color border-opacity-10 px-6 py-3 text-base font-medium text-body-color placeholder-body-color outline-none focus:border-primary focus:border-opacity-100 focus-visible:shadow-none dark:border-white dark:border-opacity-10 dark:bg-black focus:dark:border-opacity-50"
         />
@@ -169,6 +238,46 @@ const NewsLetterBox = () => {
           </defs>
         </svg>
       </div>
+      <Modal
+        isOpen={subscribeResult.loading}
+        shouldCloseOnEsc={false}
+        shouldCloseOnOverlayClick={false}
+      >
+        <div className="flex h-full w-full flex-col items-center justify-center gap-8">
+          <Blocks
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="blocks-loading"
+            wrapperStyle={{}}
+            wrapperClass="blocks-wrapper"
+          />
+          <h1 className="max-w-[30ch] text-center text-xl">
+            Please wait while your message is been sent
+          </h1>
+        </div>
+      </Modal>
+      <Modal
+        isOpen={!subscribeResult.loading && showModal}
+        onRequestClose={() => setShowModal(false)}
+      >
+        <div className="flex h-full w-full flex-col items-center justify-center gap-8">
+          <h1 className="text-center text-2xl">
+            We've got
+            <br />
+            your message !
+          </h1>
+          <p className="text-md opacity-80">
+            We will get back to you as soon as we can.
+          </p>
+          <button
+            onClick={() => setShowModal(false)}
+            className="rounded bg-primary px-4 py-2 text-sm"
+          >
+            Ok, got it
+          </button>
+        </div>
+      </Modal>
     </div>
   );
 };

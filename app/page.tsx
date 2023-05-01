@@ -10,12 +10,6 @@ import Pricing from "@/components/Pricing";
 import Testimonials from "@/components/Testimonials";
 import Video from "@/components/Video";
 
-
-export const metadata = {
-  title: "Home | CodeSanctum",
-  description: ""
-}
-
 export default function Home() {
   return (
     <>

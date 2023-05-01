@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "codegen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
     "@apollo/client": "^3.7.13",
@@ -16,14 +17,22 @@
     "graphql": "^16.6.0",
     "next": "13.1.6",
     "next-themes": "^0.2.1",
+    "phosphor-react": "^1.4.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hot-toast": "^2.4.1",
+    "react-loader-spinner": "^5.3.4",
+    "react-modal": "^3.16.1",
     "react-modal-video": "^2.0.0",
+    "zod": "^3.21.4",
     "zustand": "^4.3.7"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "3.3.1",
+    "@graphql-codegen/client-preset": "3.0.1",
     "@types/node": "^18.15.11",
     "@types/react": "^18.0.34",
+    "@types/react-modal": "^3.16.0",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.21",
     "prettier": "^2.8.3",

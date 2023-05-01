@@ -2,7 +2,7 @@ import { ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 
 export const apiUrl = (segment: string = "") => {
-    return `https://api-test.codesanctum.org/${segment}`;
+    return `https://${process.env.NEXT_PUBLIC_API_DOMAIN}/${segment}`;
 }
 
 let httpLink = createHttpLink({
@@ -33,6 +33,6 @@ let authLink = setContext((op, prev) => {
 })
 
 export const client = new ApolloClient({
-    link: authLink,
+    link: authLink.concat(httpLink),
     cache: new InMemoryCache()
 })
