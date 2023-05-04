@@ -3,8 +3,11 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import ScrollToTop from "@/components/ScrollToTop";
-import Script from "next/script";
 import "node_modules/react-modal-video/css/modal-video.css";
+import { Providers } from "./providers";
+import ReactModal from "react-modal";
+import { Toaster } from "react-hot-toast";
+
 import "../styles/index.css";
 
 ReactModal.setAppElement("body");
@@ -55,7 +58,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-import { Providers } from "./providers";
-import ReactModal from "react-modal";
-import { Toaster } from "react-hot-toast";
