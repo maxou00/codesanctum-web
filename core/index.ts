@@ -9,7 +9,6 @@ let httpLink = createHttpLink({
     uri: apiUrl("graphql"),
 });
 
-
 let authLink = setContext((op, prev) => {
     if (globalThis.localStorage) {
         let token = localStorage.getItem("accessToken");
