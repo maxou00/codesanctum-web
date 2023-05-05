@@ -33,6 +33,12 @@ export default function BaseLayout({
 }: {
   children: React.ReactNode
 }) {
+  const googleClientID = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || "";
+
+  if(global.window) {
+    global.window.GOOGLE_CLIENT_ID = googleClientID;
+  }
+
   return (
     <RootLayout>
       {children}

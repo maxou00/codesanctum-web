@@ -8,7 +8,7 @@ import { useEffect } from "react";
 export function Providers({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
-    console.log("Google Client ID: ", process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || "");
+    console.log("window.GOOGLE_CLIENT_ID ", window.GOOGLE_CLIENT_ID);
   }, []);
 
   return (
