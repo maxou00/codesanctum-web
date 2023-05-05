@@ -1,3 +1,3 @@
 export const googleClient = {
-    clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID
+    clientId: "733023448743-fj3aleckjv79niimdfi9a4l1gacmouf6.apps.googleusercontent.com"
 }
