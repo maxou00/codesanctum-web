@@ -27,7 +27,7 @@ export function GoogleSigninButton() {
 
   useEffect(() => {
     if (user) {
-      router.replace("/app");
+      router.replace("/board");
     }
   }, [router, user]);
 

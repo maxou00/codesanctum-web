@@ -26,7 +26,7 @@ export function GithubSigninButton() {
 
   useEffect(() => {
     if (user) {
-      router.replace("/u");
+      router.replace("/board");
     }
   }, [router, user]);
 

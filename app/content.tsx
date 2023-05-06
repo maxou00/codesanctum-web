@@ -8,9 +8,9 @@ export default function RootContent(props: PropsWithChildren<{}>) {
 
   return (
     <div className="w-full">
-      {false && !uiprops.hasAppLayout && <Header />}
+      {!uiprops.hasAppLayout && <Header />}
       {props.children}
-      {false && !uiprops.hasAppLayout && <Footer />}
+      {!uiprops.hasAppLayout && <Footer />}
     </div>
   );
 }
