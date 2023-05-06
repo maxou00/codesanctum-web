@@ -1,13 +1,4 @@
 export function byEnv(prodValue: any, devValue: any, testValue: any = undefined) {
-    if(process.env.NEXT_PUBLIC_ENV === "production") {
-        return prodValue;
-    }
-    if(process.env.NODE_ENV === "production") {
-        return prodValue;
-    }
-    if(process.env.NODE_ENV === "test") {
-        return testValue || prodValue;
-    }
     if(globalThis.window) {
         if(["www.codesanctum.org", "codesanctum.org"].includes(window.location.hostname)) {
             return prodValue;
@@ -18,6 +9,12 @@ export function byEnv(prodValue: any, devValue: any, testValue: any = undefined)
             }
             return devValue;
         }
+    }
+    if(process.env.NEXT_PUBLIC_ENV === "production" || process.env.NODE_ENV === "production") {
+        return prodValue;
+    }
+    if(process.env.NODE_ENV === "test") {
+        return testValue || devValue;
     }
     return devValue;
 }
