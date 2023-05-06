@@ -19,14 +19,14 @@ import { useUser } from "@/state/user";
 /* eslint-disable @next/next/no-img-element */
 
 const menus = [
-  { icon: House, title: "Home", path: "/app" },
-  { icon: BookOpen, title: "Courses", path: "/app/courses" },
-  { icon: Kanban, title: "Projects", path: "/app/projects" },
-  { icon: Chat, title: "Community", path: "/app/community" },
-  { icon: User, title: "Mentors", path: "/app/mentors" },
-  { icon: Folder, title: "Resources", path: "/app/ressources" },
-  { icon: ChartLine, title: "Progress", path: "/app/progress" },
-  { icon: Gear, title: "Settings", path: "/app/settings" },
+  { icon: House, title: "Home", path: "/u" },
+  { icon: BookOpen, title: "Courses", path: "/u/courses" },
+  { icon: Kanban, title: "Projects", path: "/u/projects" },
+  { icon: Chat, title: "Community", path: "/u/community" },
+  { icon: User, title: "Mentors", path: "/u/mentors" },
+  { icon: Folder, title: "Resources", path: "/u/ressources" },
+  { icon: ChartLine, title: "Progress", path: "/u/progress" },
+  { icon: Gear, title: "Settings", path: "/u/settings" },
 ];
 
 export default function SidebarContent() {

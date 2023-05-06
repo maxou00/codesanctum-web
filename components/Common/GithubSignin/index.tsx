@@ -8,7 +8,7 @@ export function GithubSigninButton() {
   const router = useRouter();
   const pathname = usePathname();
   const params = useSearchParams();
-  const from = (pathname as string) || "/app/signin";
+  const from = (pathname as string) || "/signin";
 
   const [user, isLoading, signinFn] = useUser((s) => [
     s.user,
@@ -26,7 +26,7 @@ export function GithubSigninButton() {
 
   useEffect(() => {
     if (user) {
-      router.replace("/app");
+      router.replace("/u");
     }
   }, [router, user]);
 
