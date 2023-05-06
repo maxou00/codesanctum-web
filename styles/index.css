@@ -11,6 +11,10 @@
   }
 }
 
+* {
+  box-sizing: border-box;
+}
+
 @layer components {
   input[type="checkbox"]:checked ~ label span svg {
     @apply inline-flex;

@@ -1,10 +1,22 @@
 "use client";
+import { useUser } from "@/state/user";
 import { useGoogleLogin } from "@react-oauth/google";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export function GoogleSigninButton() {
+  const [user, isLoading, signinFn] = useUser((s) => [
+    s.user,
+    s.isLoading,
+    s.loginWithGoogle,
+  ]);
+  const router = useRouter();
   const login = useGoogleLogin({
-    onSuccess: (response) => {
-      console.log("Logged in ! ", response);
+    scope:
+      "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid",
+    onSuccess: (response, ...args) => {
+      console.log("Logged in ! ", response, args);
+      signinFn(response.access_token);
     },
     onError(errorResponse) {
       console.log("Failed to log in ! ", errorResponse);
@@ -12,6 +24,12 @@ export function GoogleSigninButton() {
     onNonOAuthError(nonOAuthError) {},
     flow: "implicit",
   });
+
+  useEffect(() => {
+    if (user) {
+      router.replace("/app");
+    }
+  }, [router, user]);
 
   return (
     <button

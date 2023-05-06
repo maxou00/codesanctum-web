@@ -22,3 +22,39 @@ mutation SubscribeToNewsletter($data: NewsletterSubscriptionCreateInput!) {
   }
 }
 `;
+
+export const MUTATION_SIGNIN_WITH_GOOGLE = gql`
+mutation SigninWithGoogle($accessToken: String) {
+  signinWithGoogle(accessToken: $accessToken) {
+    accessToken
+    user {
+      id
+      firstname
+      lastname
+      avatar
+      gender
+      role
+      createdAt
+      email
+    }
+  }
+}
+`
+
+export const MUTATION_SIGNIN_WITH_GITHUB = gql`
+mutation SigninWithGithub($code: String) {
+  signinWithGithub(code: $code) {
+    accessToken
+    user {
+      id
+      firstname
+      lastname
+      avatar
+      gender
+      role
+      createdAt
+      email
+    }
+  }
+}
+`;

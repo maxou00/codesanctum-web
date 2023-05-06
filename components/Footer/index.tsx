@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import { useUI } from "@/state/ui";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -191,7 +192,7 @@ const Footer = () => {
         <div className="bg-primary/10 py-8">
           <div className="container">
             <p className="text-center text-base text-body-color dark:text-white">
-              Powered by {" "}
+              Powered by{" "}
               <a href="https://www.softwaiz.co" rel="nofollow noopener">
                 Softwaiz
               </a>

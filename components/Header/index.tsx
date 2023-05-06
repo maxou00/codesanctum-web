@@ -5,8 +5,12 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import ThemeToggler from "./ThemeToggler";
 import menuData from "./menuData";
+import { useUser } from "@/state/user";
+import { useUI } from "@/state/ui";
 
 const Header = () => {
+  const identity = useUser();
+
   // Navbar toggle
   const [navbarOpen, setNavbarOpen] = useState(false);
   const navbarToggleHandler = () => {
@@ -150,18 +154,42 @@ const Header = () => {
                 </nav>
               </div>
               <div className="flex items-center justify-end pr-16 lg:pr-0">
-                <Link
-                  href="/signin"
-                  className="hidden px-7 py-3 text-base font-bold text-dark hover:opacity-70 dark:text-white md:block"
-                >
-                  Sign In
-                </Link>
-                <Link
-                  href="/signup"
-                  className="ease-in-up hidden rounded-md bg-primary px-8 py-3 text-base font-bold text-white transition duration-300 hover:bg-opacity-90 hover:shadow-signUp md:block md:px-9 lg:px-6 xl:px-9"
-                >
-                  Sign Up
-                </Link>
+                {!identity.user && (
+                  <>
+                    <Link
+                      href="/signin"
+                      className="hidden px-7 py-3 text-base font-bold text-dark hover:opacity-70 dark:text-white md:block"
+                    >
+                      Sign In
+                    </Link>
+                    {/*<Link
+                      href="/signup"
+                      className="ease-in-up hidden rounded-md bg-primary px-8 py-3 text-base font-bold text-white transition duration-300 hover:bg-opacity-90 hover:shadow-signUp md:block md:px-9 lg:px-6 xl:px-9"
+                    >
+                      Sign Up
+                </Link>*/}
+                  </>
+                )}
+
+                {identity.user && (
+                  <Link
+                    href="/app"
+                    className="ease-in-up hidden rounded-md bg-primary px-8 py-3 text-base font-bold text-white transition duration-300 hover:bg-opacity-90 hover:shadow-signUp md:block md:px-9 lg:px-6 xl:px-9"
+                  >
+                    Dashboard
+                  </Link>
+                )}
+                {identity.user && (
+                  <>
+                    <button
+                      onClick={() => identity.logout()}
+                      className="hidden px-7 py-3 text-base font-bold text-dark hover:opacity-70 dark:text-white md:block"
+                    >
+                      Log Out
+                    </button>
+                  </>
+                )}
+
                 <div>
                   <ThemeToggler />
                 </div>

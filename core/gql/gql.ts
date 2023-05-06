@@ -15,6 +15,9 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
 const documents = {
     "\nmutation ContactUs($data: MessageCreateInput!) {\n  createMessage(data: $data) {\n    createdAt\n    email\n    id\n    message\n    name\n  }\n}\n": types.ContactUsDocument,
     "\nmutation SubscribeToNewsletter($data: NewsletterSubscriptionCreateInput!) {\n  createNewsletterSubscription(data: $data) {\n    id\n    name\n    email\n    createdAt\n  }\n}\n": types.SubscribeToNewsletterDocument,
+    "\nmutation SigninWithGoogle($accessToken: String) {\n  signinWithGoogle(accessToken: $accessToken) {\n    accessToken\n    user {\n      id\n      firstname\n      lastname\n      avatar\n      gender\n      role\n      createdAt\n      email\n    }\n  }\n}\n": types.SigninWithGoogleDocument,
+    "\nmutation SigninWithGithub($code: String) {\n  signinWithGithub(code: $code) {\n    accessToken\n    user {\n      id\n      firstname\n      lastname\n      avatar\n      gender\n      role\n      createdAt\n      email\n    }\n  }\n}\n": types.SigninWithGithubDocument,
+    "\nquery Me {\n  me {\n    id\n    firstname\n    lastname\n    avatar\n    gender\n    role\n    createdAt\n    email\n  }\n}\n": types.MeDocument,
 };
 
 /**
@@ -39,6 +42,18 @@ export function graphql(source: "\nmutation ContactUs($data: MessageCreateInput!
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "\nmutation SubscribeToNewsletter($data: NewsletterSubscriptionCreateInput!) {\n  createNewsletterSubscription(data: $data) {\n    id\n    name\n    email\n    createdAt\n  }\n}\n"): (typeof documents)["\nmutation SubscribeToNewsletter($data: NewsletterSubscriptionCreateInput!) {\n  createNewsletterSubscription(data: $data) {\n    id\n    name\n    email\n    createdAt\n  }\n}\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\nmutation SigninWithGoogle($accessToken: String) {\n  signinWithGoogle(accessToken: $accessToken) {\n    accessToken\n    user {\n      id\n      firstname\n      lastname\n      avatar\n      gender\n      role\n      createdAt\n      email\n    }\n  }\n}\n"): (typeof documents)["\nmutation SigninWithGoogle($accessToken: String) {\n  signinWithGoogle(accessToken: $accessToken) {\n    accessToken\n    user {\n      id\n      firstname\n      lastname\n      avatar\n      gender\n      role\n      createdAt\n      email\n    }\n  }\n}\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\nmutation SigninWithGithub($code: String) {\n  signinWithGithub(code: $code) {\n    accessToken\n    user {\n      id\n      firstname\n      lastname\n      avatar\n      gender\n      role\n      createdAt\n      email\n    }\n  }\n}\n"): (typeof documents)["\nmutation SigninWithGithub($code: String) {\n  signinWithGithub(code: $code) {\n    accessToken\n    user {\n      id\n      firstname\n      lastname\n      avatar\n      gender\n      role\n      createdAt\n      email\n    }\n  }\n}\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\nquery Me {\n  me {\n    id\n    firstname\n    lastname\n    avatar\n    gender\n    role\n    createdAt\n    email\n  }\n}\n"): (typeof documents)["\nquery Me {\n  me {\n    id\n    firstname\n    lastname\n    avatar\n    gender\n    role\n    createdAt\n    email\n  }\n}\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

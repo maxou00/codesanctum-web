@@ -2,7 +2,7 @@ import { ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 
 export const apiUrl = (segment: string = "") => {
-    return `https://${process.env.NEXT_PUBLIC_API_DOMAIN}/${segment}`;
+    return `https://api-test.codesanctum.org/${segment}`;
 }
 
 let httpLink = createHttpLink({
@@ -17,7 +17,7 @@ let authLink = setContext((op, prev) => {
                 ...prev,
                 headers: {
                     ...prev.headers,
-                    Authorization: `session ${token}`
+                    Authorization: `bearer ${token}`
                 }
             }
         }

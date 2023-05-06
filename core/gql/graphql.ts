@@ -385,7 +385,8 @@ export type Mutation = {
   deleteUser?: Maybe<User>;
   deleteUsers?: Maybe<Array<Maybe<User>>>;
   endSession: Scalars['Boolean'];
-  signin?: Maybe<SigninResult>;
+  signinWithGithub?: Maybe<SigninResult>;
+  signinWithGoogle?: Maybe<SigninResult>;
   updateComment?: Maybe<Comment>;
   updateComments?: Maybe<Array<Maybe<Comment>>>;
   updateMessage?: Maybe<Message>;
@@ -544,8 +545,13 @@ export type MutationDeleteUsersArgs = {
 };
 
 
-export type MutationSigninArgs = {
-  auth0Token?: InputMaybe<Scalars['String']>;
+export type MutationSigninWithGithubArgs = {
+  code?: InputMaybe<Scalars['String']>;
+};
+
+
+export type MutationSigninWithGoogleArgs = {
+  accessToken?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -1202,8 +1208,6 @@ export type TagWhereUniqueInput = {
 
 export type User = {
   __typename?: 'User';
-  auth0Avatar?: Maybe<Scalars['String']>;
-  authId?: Maybe<Scalars['String']>;
   avatar?: Maybe<Scalars['String']>;
   comments?: Maybe<Array<Comment>>;
   commentsCount?: Maybe<Scalars['Int']>;
@@ -1216,6 +1220,7 @@ export type User = {
   picture?: Maybe<Scalars['JSON']>;
   posts?: Maybe<Array<Post>>;
   postsCount?: Maybe<Scalars['Int']>;
+  providers?: Maybe<Scalars['JSON']>;
   reactions?: Maybe<Array<Reaction>>;
   reactionsCount?: Maybe<Scalars['Int']>;
   role?: Maybe<Scalars['String']>;
@@ -1262,8 +1267,6 @@ export type UserReactionsCountArgs = {
 };
 
 export type UserCreateInput = {
-  auth0Avatar?: InputMaybe<Scalars['String']>;
-  authId?: InputMaybe<Scalars['String']>;
   comments?: InputMaybe<CommentRelateToManyForCreateInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   email?: InputMaybe<Scalars['String']>;
@@ -1272,14 +1275,13 @@ export type UserCreateInput = {
   lastname?: InputMaybe<Scalars['String']>;
   picture?: InputMaybe<Scalars['JSON']>;
   posts?: InputMaybe<PostRelateToManyForCreateInput>;
+  providers?: InputMaybe<Scalars['JSON']>;
   reactions?: InputMaybe<ReactionRelateToManyForCreateInput>;
   role?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type UserOrderByInput = {
-  auth0Avatar?: InputMaybe<OrderDirection>;
-  authId?: InputMaybe<OrderDirection>;
   createdAt?: InputMaybe<OrderDirection>;
   email?: InputMaybe<OrderDirection>;
   firstname?: InputMaybe<OrderDirection>;
@@ -1307,8 +1309,6 @@ export type UserUpdateArgs = {
 };
 
 export type UserUpdateInput = {
-  auth0Avatar?: InputMaybe<Scalars['String']>;
-  authId?: InputMaybe<Scalars['String']>;
   comments?: InputMaybe<CommentRelateToManyForUpdateInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   email?: InputMaybe<Scalars['String']>;
@@ -1317,6 +1317,7 @@ export type UserUpdateInput = {
   lastname?: InputMaybe<Scalars['String']>;
   picture?: InputMaybe<Scalars['JSON']>;
   posts?: InputMaybe<PostRelateToManyForUpdateInput>;
+  providers?: InputMaybe<Scalars['JSON']>;
   reactions?: InputMaybe<ReactionRelateToManyForUpdateInput>;
   role?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
@@ -1326,8 +1327,6 @@ export type UserWhereInput = {
   AND?: InputMaybe<Array<UserWhereInput>>;
   NOT?: InputMaybe<Array<UserWhereInput>>;
   OR?: InputMaybe<Array<UserWhereInput>>;
-  auth0Avatar?: InputMaybe<StringFilter>;
-  authId?: InputMaybe<StringFilter>;
   comments?: InputMaybe<CommentManyRelationFilter>;
   createdAt?: InputMaybe<DateTimeNullableFilter>;
   email?: InputMaybe<StringFilter>;
@@ -1342,7 +1341,6 @@ export type UserWhereInput = {
 };
 
 export type UserWhereUniqueInput = {
-  authId?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['ID']>;
 };
 
@@ -1360,6 +1358,28 @@ export type SubscribeToNewsletterMutationVariables = Exact<{
 
 export type SubscribeToNewsletterMutation = { __typename?: 'Mutation', createNewsletterSubscription?: { __typename?: 'NewsletterSubscription', id: string, name?: string | null, email?: string | null, createdAt?: any | null } | null };
 
+export type SigninWithGoogleMutationVariables = Exact<{
+  accessToken?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type SigninWithGoogleMutation = { __typename?: 'Mutation', signinWithGoogle?: { __typename?: 'SigninResult', accessToken?: string | null, user?: { __typename?: 'User', id: string, firstname?: string | null, lastname?: string | null, avatar?: string | null, gender?: string | null, role?: string | null, createdAt?: any | null, email?: string | null } | null } | null };
+
+export type SigninWithGithubMutationVariables = Exact<{
+  code?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type SigninWithGithubMutation = { __typename?: 'Mutation', signinWithGithub?: { __typename?: 'SigninResult', accessToken?: string | null, user?: { __typename?: 'User', id: string, firstname?: string | null, lastname?: string | null, avatar?: string | null, gender?: string | null, role?: string | null, createdAt?: any | null, email?: string | null } | null } | null };
+
+export type MeQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type MeQuery = { __typename?: 'Query', me?: { __typename?: 'User', id: string, firstname?: string | null, lastname?: string | null, avatar?: string | null, gender?: string | null, role?: string | null, createdAt?: any | null, email?: string | null } | null };
+
 
 export const ContactUsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"ContactUs"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"data"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"MessageCreateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createMessage"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"data"},"value":{"kind":"Variable","name":{"kind":"Name","value":"data"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"message"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]} as unknown as DocumentNode<ContactUsMutation, ContactUsMutationVariables>;
 export const SubscribeToNewsletterDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"SubscribeToNewsletter"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"data"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"NewsletterSubscriptionCreateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createNewsletterSubscription"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"data"},"value":{"kind":"Variable","name":{"kind":"Name","value":"data"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}}]}}]}}]} as unknown as DocumentNode<SubscribeToNewsletterMutation, SubscribeToNewsletterMutationVariables>;
+export const SigninWithGoogleDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"SigninWithGoogle"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"accessToken"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"signinWithGoogle"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"accessToken"},"value":{"kind":"Variable","name":{"kind":"Name","value":"accessToken"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"accessToken"}},{"kind":"Field","name":{"kind":"Name","value":"user"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}},{"kind":"Field","name":{"kind":"Name","value":"avatar"}},{"kind":"Field","name":{"kind":"Name","value":"gender"}},{"kind":"Field","name":{"kind":"Name","value":"role"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"email"}}]}}]}}]}}]} as unknown as DocumentNode<SigninWithGoogleMutation, SigninWithGoogleMutationVariables>;
+export const SigninWithGithubDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"SigninWithGithub"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"code"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"signinWithGithub"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"code"},"value":{"kind":"Variable","name":{"kind":"Name","value":"code"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"accessToken"}},{"kind":"Field","name":{"kind":"Name","value":"user"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}},{"kind":"Field","name":{"kind":"Name","value":"avatar"}},{"kind":"Field","name":{"kind":"Name","value":"gender"}},{"kind":"Field","name":{"kind":"Name","value":"role"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"email"}}]}}]}}]}}]} as unknown as DocumentNode<SigninWithGithubMutation, SigninWithGithubMutationVariables>;
+export const MeDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Me"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"me"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}},{"kind":"Field","name":{"kind":"Name","value":"avatar"}},{"kind":"Field","name":{"kind":"Name","value":"gender"}},{"kind":"Field","name":{"kind":"Name","value":"role"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"email"}}]}}]}}]} as unknown as DocumentNode<MeQuery, MeQueryVariables>;

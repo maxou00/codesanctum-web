@@ -1,4 +1,4 @@
-import RootLayout from "./root-layout"
+import RootLayout from "./root"
 
 export const metadata = {
   title: {

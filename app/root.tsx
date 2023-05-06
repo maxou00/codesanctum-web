@@ -9,8 +9,22 @@ import ReactModal from "react-modal";
 import { Toaster } from "react-hot-toast";
 
 import "../styles/index.css";
+import { PropsWithChildren } from "react";
+import { useUI } from "@/state/ui";
 
 ReactModal.setAppElement("body");
+
+function RootContent(props: PropsWithChildren<{}>) {
+  const uiprops = useUI();
+
+  return (
+    <>
+      {!uiprops.isDashboard && <Header />}
+      {props.children}
+      {!uiprops.isDashboard && <Footer />}
+    </>
+  );
+}
 
 export default function RootLayout({
   children,
@@ -48,9 +62,7 @@ export default function RootLayout({
           ></iframe>
         </noscript>
         <Providers>
-          <Header />
-          {children}
-          <Footer />
+          <RootContent>{children}</RootContent>
           <Toaster position="top-center" />
           <ScrollToTop />
         </Providers>

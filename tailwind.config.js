@@ -20,6 +20,9 @@ module.exports = {
       white: "#FFFFFF",
       black: "#0A0C17",
       dark: "#0b132b",
+      dashboard: {
+        panel: "#1A5F7A"
+      },
       primary: "#FF7F50",
       yellow: "#FBB040",
       "body-color": "#959CB1",
