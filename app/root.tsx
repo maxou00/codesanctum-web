@@ -18,11 +18,11 @@ function RootContent(props: PropsWithChildren<{}>) {
   const uiprops = useUI();
 
   return (
-    <>
+    <div className="w-full">
       {!uiprops.isDashboard && <Header />}
       {props.children}
       {!uiprops.isDashboard && <Footer />}
-    </>
+    </div>
   );
 }
 

@@ -23,9 +23,9 @@ export default function Protected(props: PropsWithChildren<{}>) {
     }
   }, [loading, user]);
 
-  return <>
+  return <div className="w-full">
     {
         canPass && props.children
     }
-  </>
+  </div>
 }

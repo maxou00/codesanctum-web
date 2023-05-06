@@ -12,5 +12,5 @@ export default function Initializer(props: PropsWithChildren<{}>) {
     refresh();
   }, []);
 
-  return <>{props.children}</>;
+  return <div className="w-full">{props.children}</div>;
 }
