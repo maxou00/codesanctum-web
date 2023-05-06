@@ -1,7 +1,5 @@
 /* eslint-disable @next/next/next-script-for-ga */
 "use client";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
 import ScrollToTop from "@/components/ScrollToTop";
 import "node_modules/react-modal-video/css/modal-video.css";
 import { Providers } from "./providers";
@@ -9,22 +7,9 @@ import ReactModal from "react-modal";
 import { Toaster } from "react-hot-toast";
 
 import "../styles/index.css";
-import { PropsWithChildren } from "react";
-import { useUI } from "@/state/ui";
+import RootContent from "./content";
 
 ReactModal.setAppElement("body");
-
-function RootContent(props: PropsWithChildren<{}>) {
-  const uiprops = useUI();
-
-  return (
-    <div className="w-full">
-      {!uiprops.isDashboard && <Header />}
-      {props.children}
-      {!uiprops.isDashboard && <Footer />}
-    </div>
-  );
-}
 
 export default function RootLayout({
   children,

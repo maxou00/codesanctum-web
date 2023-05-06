@@ -1,15 +1,15 @@
 import { create } from "zustand";
 
 interface UIProps {
-    isDashboard: boolean;
-    enableDashboard: (enable: boolean) => void;
+    hasAppLayout: boolean;
+    enableAppLayout: (enable: boolean) => void;
 }
 
 export const useUI = create<UIProps>((set, get) => {
     return {
-        isDashboard: false,
-        enableDashboard(enable = false) {
-            set({ isDashboard: enable })
+        hasAppLayout: globalThis.window && globalThis.window.location.pathname.startsWith("/app"),
+        enableAppLayout(enable = false) {
+            set({ hasAppLayout: enable })
         },
     }
 })

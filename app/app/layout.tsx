@@ -9,9 +9,9 @@ export default function PageLayout(props: PropsWithChildren<{}>) {
   const uiProps = useUI();
 
   useEffect(() => {
-    uiProps.enableDashboard(true);
+    uiProps.enableAppLayout(true);
     return () => {
-      uiProps.enableDashboard(false);
+      uiProps.enableAppLayout(false);
     };
   }, []);
 
