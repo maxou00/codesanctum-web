@@ -1,8 +1,9 @@
 import { ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
+import { byEnv } from "./env";
 
 export const apiUrl = (segment: string = "") => {
-    return `https://api-test.codesanctum.org/${segment}`;
+    return byEnv(`https://api.codesanctum.org/${segment}`, `https://api-test.codesanctum.org/${segment}`);
 }
 
 let httpLink = createHttpLink({

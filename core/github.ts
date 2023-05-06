@@ -1,6 +1,8 @@
+import { byEnv } from "./env";
+
 export const githubClient = {
     clientId: "Iv1.c9be0bd51a7bd8bf",
-    redirectUri: "http://localhost:3000/signin?oauth=github"
+    redirectUri: byEnv("https://www.codesanctum.org/signin?oauth=github", "http://localhost:3000/signin?oauth=github", "https://test.codesanctum.org/signin?oauth=github")
 }
 
 export function getGithubLoginUrl(from: string) {
