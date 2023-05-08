@@ -18,10 +18,12 @@ export default function PageLayout(props: PropsWithChildren<{}>) {
   return (
     <div className="relative min-h-screen w-full">
       <Protected>
-        <div className="fixed left-0 top-0 h-screen w-[280px]">
+        <div className="z-2 fixed left-0 top-0 h-screen w-[280px]">
           <SidebarContent />
         </div>
-        <div className="w-full p-4 pl-[280px]">{props.children}</div>
+        <div className="w-full pl-[280px]">
+          <div className="w-full p-8">{props.children}</div>
+        </div>
       </Protected>
     </div>
   );

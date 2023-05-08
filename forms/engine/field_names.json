@@ -1,0 +1,17 @@
+{
+    "field_text": "Text",
+    "field_text_short": "Short Text",
+    "field_text_rich": "Rich Text",
+    "field_text_paragraph": "Paragraph",
+    "field_text_email": "Email",
+    "field_number": "Number",
+    "field_number_date": "Date",
+    "field_number_time": "Hour",
+    "field_number_datetime": "Date and Hour",
+    "field_selection": "Choices",
+    "field_selection_dropdown": "Dropdown",
+    "field_selection_radio": "Radio",
+    "field_selection_checkbox": "Checkbox",
+    "field_selection_chip": "Badge",
+    "field_file": "File"
+}

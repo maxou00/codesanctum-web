@@ -1,9 +1,9 @@
-import { useUser } from "@/state/user";
+import { useIdentity } from "@/state/user";
 import { useRouter } from "next/navigation";
 import { PropsWithChildren, useEffect, useMemo } from "react";
 
 export default function Protected(props: PropsWithChildren<{}>) {
-  const [loading, user, refresh] = useUser((s) => [
+  const [loading, user, refresh] = useIdentity((s) => [
     s.isLoading,
     s.user,
     s.refresh,

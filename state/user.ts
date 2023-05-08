@@ -13,7 +13,7 @@ interface UserState {
     logout: () => any;
 }
 
-export const useUser = create<UserState>((set, get) => {
+export const useIdentity = create<UserState>((set, get) => {
     return {
         isLoading: true,
         user: undefined,

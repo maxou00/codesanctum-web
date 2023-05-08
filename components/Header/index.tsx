@@ -5,11 +5,11 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import ThemeToggler from "./ThemeToggler";
 import menuData from "./menuData";
-import { useUser } from "@/state/user";
+import { useIdentity } from "@/state/user";
 import { useUI } from "@/state/ui";
 
 const Header = () => {
-  const identity = useUser();
+  const identity = useIdentity();
 
   // Navbar toggle
   const [navbarOpen, setNavbarOpen] = useState(false);

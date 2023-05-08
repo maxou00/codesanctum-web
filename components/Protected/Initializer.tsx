@@ -1,8 +1,8 @@
-import { useUser } from "@/state/user";
+import { useIdentity } from "@/state/user";
 import { PropsWithChildren, useEffect } from "react";
 
 export default function Initializer(props: PropsWithChildren<{}>) {
-  const [loading, user, refresh] = useUser((s) => [
+  const [loading, user, refresh] = useIdentity((s) => [
     s.isLoading,
     s.user,
     s.refresh,

@@ -1,11 +1,11 @@
 "use client";
-import { useUser } from "@/state/user";
+import { useIdentity } from "@/state/user";
 import { useGoogleLogin } from "@react-oauth/google";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 export function GoogleSigninButton() {
-  const [user, isLoading, signinFn] = useUser((s) => [
+  const [user, isLoading, signinFn] = useIdentity((s) => [
     s.user,
     s.isLoading,
     s.loginWithGoogle,

@@ -1,6 +1,6 @@
 "use client";
 import { getGithubLoginUrl } from "@/core/github";
-import { useUser } from "@/state/user";
+import { useIdentity } from "@/state/user";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 
@@ -10,7 +10,7 @@ export function GithubSigninButton() {
   const params = useSearchParams();
   const from = (pathname as string) || "/signin";
 
-  const [user, isLoading, signinFn] = useUser((s) => [
+  const [user, isLoading, signinFn] = useIdentity((s) => [
     s.user,
     s.isLoading,
     s.loginWithGithub,

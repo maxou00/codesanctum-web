@@ -14,7 +14,7 @@ import {
 } from "phosphor-react";
 import ThemeToggler from "@/components/Header/ThemeToggler";
 import Link from "next/link";
-import { useUser } from "@/state/user";
+import { useIdentity } from "@/state/user";
 
 /* eslint-disable @next/next/no-img-element */
 
@@ -30,7 +30,7 @@ const menus = [
 ];
 
 export default function SidebarContent() {
-  const identity = useUser();
+  const identity = useIdentity();
   return (
     <div className="flex min-h-screen w-full flex-col items-center justify-start gap-4 bg-dashboard-panel text-white">
       <div className="flex w-full flex-row items-center justify-start gap-2 p-4">
