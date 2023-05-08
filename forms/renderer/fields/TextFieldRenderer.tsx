@@ -24,18 +24,18 @@ export function TextFieldRenderer(props: FieldRendererProps) {
   );
 
   return (
-    <div className="p-1">
+    <div className="w-full">
       {isMultiline ? (
         <textarea
           value={props.response?.answer || ""}
           rows={props.question.rows || 6}
-          placeholder={props.question.title}
+          placeholder={props.question.placeholder || ""}
           onChange={onChange}
-          className="border-1 w-full rounded border"
+          className="w-full rounded-md px-4 py-2 dark:bg-black dark:text-white"
         ></textarea>
       ) : (
         <input
-          className="border-1 w-full rounded border"
+          className="w-full rounded-md px-4 py-2 dark:bg-black dark:text-white"
           type={fieldType}
           value={props.response?.answer || ""}
           placeholder={props.question.title}

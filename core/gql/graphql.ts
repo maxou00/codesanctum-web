@@ -17,6 +17,76 @@ export type Scalars = {
   JSON: any;
 };
 
+export type Answer = {
+  __typename?: 'Answer';
+  createdAt?: Maybe<Scalars['DateTime']>;
+  data?: Maybe<Scalars['JSON']>;
+  form?: Maybe<Form>;
+  id: Scalars['ID'];
+  updatedAt?: Maybe<Scalars['DateTime']>;
+  user?: Maybe<User>;
+};
+
+export type AnswerCreateInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  data?: InputMaybe<Scalars['JSON']>;
+  form?: InputMaybe<FormRelateToOneForCreateInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  user?: InputMaybe<UserRelateToOneForCreateInput>;
+};
+
+export type AnswerManyRelationFilter = {
+  every?: InputMaybe<AnswerWhereInput>;
+  none?: InputMaybe<AnswerWhereInput>;
+  some?: InputMaybe<AnswerWhereInput>;
+};
+
+export type AnswerOrderByInput = {
+  createdAt?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  updatedAt?: InputMaybe<OrderDirection>;
+};
+
+export type AnswerRelateToManyForCreateInput = {
+  connect?: InputMaybe<Array<AnswerWhereUniqueInput>>;
+  create?: InputMaybe<Array<AnswerCreateInput>>;
+};
+
+export type AnswerRelateToManyForUpdateInput = {
+  connect?: InputMaybe<Array<AnswerWhereUniqueInput>>;
+  create?: InputMaybe<Array<AnswerCreateInput>>;
+  disconnect?: InputMaybe<Array<AnswerWhereUniqueInput>>;
+  set?: InputMaybe<Array<AnswerWhereUniqueInput>>;
+};
+
+export type AnswerUpdateArgs = {
+  data: AnswerUpdateInput;
+  where: AnswerWhereUniqueInput;
+};
+
+export type AnswerUpdateInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  data?: InputMaybe<Scalars['JSON']>;
+  form?: InputMaybe<FormRelateToOneForUpdateInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  user?: InputMaybe<UserRelateToOneForUpdateInput>;
+};
+
+export type AnswerWhereInput = {
+  AND?: InputMaybe<Array<AnswerWhereInput>>;
+  NOT?: InputMaybe<Array<AnswerWhereInput>>;
+  OR?: InputMaybe<Array<AnswerWhereInput>>;
+  createdAt?: InputMaybe<DateTimeNullableFilter>;
+  form?: InputMaybe<FormWhereInput>;
+  id?: InputMaybe<IdFilter>;
+  updatedAt?: InputMaybe<DateTimeNullableFilter>;
+  user?: InputMaybe<UserWhereInput>;
+};
+
+export type AnswerWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
 export type BooleanFilter = {
   equals?: InputMaybe<Scalars['Boolean']>;
   not?: InputMaybe<BooleanFilter>;
@@ -163,6 +233,102 @@ export type DateTimeNullableFilter = {
   notIn?: InputMaybe<Array<Scalars['DateTime']>>;
 };
 
+export type Form = {
+  __typename?: 'Form';
+  answer?: Maybe<Answer>;
+  answers?: Maybe<Array<Answer>>;
+  answersCount?: Maybe<Scalars['Int']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  data?: Maybe<Scalars['JSON']>;
+  id: Scalars['ID'];
+  updatedAt?: Maybe<Scalars['DateTime']>;
+  user?: Maybe<User>;
+};
+
+
+export type FormAnswersArgs = {
+  orderBy?: Array<AnswerOrderByInput>;
+  skip?: Scalars['Int'];
+  take?: InputMaybe<Scalars['Int']>;
+  where?: AnswerWhereInput;
+};
+
+
+export type FormAnswersCountArgs = {
+  where?: AnswerWhereInput;
+};
+
+export type FormCreateInput = {
+  answers?: InputMaybe<AnswerRelateToManyForCreateInput>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  data?: InputMaybe<Scalars['JSON']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  user?: InputMaybe<UserRelateToOneForCreateInput>;
+};
+
+export type FormManyRelationFilter = {
+  every?: InputMaybe<FormWhereInput>;
+  none?: InputMaybe<FormWhereInput>;
+  some?: InputMaybe<FormWhereInput>;
+};
+
+export type FormOrderByInput = {
+  createdAt?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  updatedAt?: InputMaybe<OrderDirection>;
+};
+
+export type FormRelateToManyForCreateInput = {
+  connect?: InputMaybe<Array<FormWhereUniqueInput>>;
+  create?: InputMaybe<Array<FormCreateInput>>;
+};
+
+export type FormRelateToManyForUpdateInput = {
+  connect?: InputMaybe<Array<FormWhereUniqueInput>>;
+  create?: InputMaybe<Array<FormCreateInput>>;
+  disconnect?: InputMaybe<Array<FormWhereUniqueInput>>;
+  set?: InputMaybe<Array<FormWhereUniqueInput>>;
+};
+
+export type FormRelateToOneForCreateInput = {
+  connect?: InputMaybe<FormWhereUniqueInput>;
+  create?: InputMaybe<FormCreateInput>;
+};
+
+export type FormRelateToOneForUpdateInput = {
+  connect?: InputMaybe<FormWhereUniqueInput>;
+  create?: InputMaybe<FormCreateInput>;
+  disconnect?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type FormUpdateArgs = {
+  data: FormUpdateInput;
+  where: FormWhereUniqueInput;
+};
+
+export type FormUpdateInput = {
+  answers?: InputMaybe<AnswerRelateToManyForUpdateInput>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  data?: InputMaybe<Scalars['JSON']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  user?: InputMaybe<UserRelateToOneForUpdateInput>;
+};
+
+export type FormWhereInput = {
+  AND?: InputMaybe<Array<FormWhereInput>>;
+  NOT?: InputMaybe<Array<FormWhereInput>>;
+  OR?: InputMaybe<Array<FormWhereInput>>;
+  answers?: InputMaybe<AnswerManyRelationFilter>;
+  createdAt?: InputMaybe<DateTimeNullableFilter>;
+  id?: InputMaybe<IdFilter>;
+  updatedAt?: InputMaybe<DateTimeNullableFilter>;
+  user?: InputMaybe<UserWhereInput>;
+};
+
+export type FormWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
 export type IdFilter = {
   equals?: InputMaybe<Scalars['ID']>;
   gt?: InputMaybe<Scalars['ID']>;
@@ -172,6 +338,17 @@ export type IdFilter = {
   lte?: InputMaybe<Scalars['ID']>;
   not?: InputMaybe<IdFilter>;
   notIn?: InputMaybe<Array<Scalars['ID']>>;
+};
+
+export type IntNullableFilter = {
+  equals?: InputMaybe<Scalars['Int']>;
+  gt?: InputMaybe<Scalars['Int']>;
+  gte?: InputMaybe<Scalars['Int']>;
+  in?: InputMaybe<Array<Scalars['Int']>>;
+  lt?: InputMaybe<Scalars['Int']>;
+  lte?: InputMaybe<Scalars['Int']>;
+  not?: InputMaybe<IntNullableFilter>;
+  notIn?: InputMaybe<Array<Scalars['Int']>>;
 };
 
 export type KeystoneAdminMeta = {
@@ -356,8 +533,12 @@ export type MessageWhereUniqueInput = {
 
 export type Mutation = {
   __typename?: 'Mutation';
+  createAnswer?: Maybe<Answer>;
+  createAnswers?: Maybe<Array<Maybe<Answer>>>;
   createComment?: Maybe<Comment>;
   createComments?: Maybe<Array<Maybe<Comment>>>;
+  createForm?: Maybe<Form>;
+  createForms?: Maybe<Array<Maybe<Form>>>;
   createMessage?: Maybe<Message>;
   createMessages?: Maybe<Array<Maybe<Message>>>;
   createNewsletterSubscription?: Maybe<NewsletterSubscription>;
@@ -370,8 +551,12 @@ export type Mutation = {
   createTags?: Maybe<Array<Maybe<Tag>>>;
   createUser?: Maybe<User>;
   createUsers?: Maybe<Array<Maybe<User>>>;
+  deleteAnswer?: Maybe<Answer>;
+  deleteAnswers?: Maybe<Array<Maybe<Answer>>>;
   deleteComment?: Maybe<Comment>;
   deleteComments?: Maybe<Array<Maybe<Comment>>>;
+  deleteForm?: Maybe<Form>;
+  deleteForms?: Maybe<Array<Maybe<Form>>>;
   deleteMessage?: Maybe<Message>;
   deleteMessages?: Maybe<Array<Maybe<Message>>>;
   deleteNewsletterSubscription?: Maybe<NewsletterSubscription>;
@@ -387,8 +572,12 @@ export type Mutation = {
   endSession: Scalars['Boolean'];
   signinWithGithub?: Maybe<SigninResult>;
   signinWithGoogle?: Maybe<SigninResult>;
+  updateAnswer?: Maybe<Answer>;
+  updateAnswers?: Maybe<Array<Maybe<Answer>>>;
   updateComment?: Maybe<Comment>;
   updateComments?: Maybe<Array<Maybe<Comment>>>;
+  updateForm?: Maybe<Form>;
+  updateForms?: Maybe<Array<Maybe<Form>>>;
   updateMessage?: Maybe<Message>;
   updateMessages?: Maybe<Array<Maybe<Message>>>;
   updateNewsletterSubscription?: Maybe<NewsletterSubscription>;
@@ -405,6 +594,16 @@ export type Mutation = {
 };
 
 
+export type MutationCreateAnswerArgs = {
+  data: AnswerCreateInput;
+};
+
+
+export type MutationCreateAnswersArgs = {
+  data: Array<AnswerCreateInput>;
+};
+
+
 export type MutationCreateCommentArgs = {
   data: CommentCreateInput;
 };
@@ -412,6 +611,16 @@ export type MutationCreateCommentArgs = {
 
 export type MutationCreateCommentsArgs = {
   data: Array<CommentCreateInput>;
+};
+
+
+export type MutationCreateFormArgs = {
+  data: FormCreateInput;
+};
+
+
+export type MutationCreateFormsArgs = {
+  data: Array<FormCreateInput>;
 };
 
 
@@ -475,6 +684,16 @@ export type MutationCreateUsersArgs = {
 };
 
 
+export type MutationDeleteAnswerArgs = {
+  where: AnswerWhereUniqueInput;
+};
+
+
+export type MutationDeleteAnswersArgs = {
+  where: Array<AnswerWhereUniqueInput>;
+};
+
+
 export type MutationDeleteCommentArgs = {
   where: CommentWhereUniqueInput;
 };
@@ -482,6 +701,16 @@ export type MutationDeleteCommentArgs = {
 
 export type MutationDeleteCommentsArgs = {
   where: Array<CommentWhereUniqueInput>;
+};
+
+
+export type MutationDeleteFormArgs = {
+  where: FormWhereUniqueInput;
+};
+
+
+export type MutationDeleteFormsArgs = {
+  where: Array<FormWhereUniqueInput>;
 };
 
 
@@ -555,6 +784,17 @@ export type MutationSigninWithGoogleArgs = {
 };
 
 
+export type MutationUpdateAnswerArgs = {
+  data: AnswerUpdateInput;
+  where: AnswerWhereUniqueInput;
+};
+
+
+export type MutationUpdateAnswersArgs = {
+  data: Array<AnswerUpdateArgs>;
+};
+
+
 export type MutationUpdateCommentArgs = {
   data: CommentUpdateInput;
   where: CommentWhereUniqueInput;
@@ -563,6 +803,17 @@ export type MutationUpdateCommentArgs = {
 
 export type MutationUpdateCommentsArgs = {
   data: Array<CommentUpdateArgs>;
+};
+
+
+export type MutationUpdateFormArgs = {
+  data: FormUpdateInput;
+  where: FormWhereUniqueInput;
+};
+
+
+export type MutationUpdateFormsArgs = {
+  data: Array<FormUpdateArgs>;
 };
 
 
@@ -867,9 +1118,16 @@ export type PostWhereUniqueInput = {
 
 export type Query = {
   __typename?: 'Query';
+  answer?: Maybe<Answer>;
+  answers?: Maybe<Array<Answer>>;
+  answersCount?: Maybe<Scalars['Int']>;
   comment?: Maybe<Comment>;
   comments?: Maybe<Array<Comment>>;
   commentsCount?: Maybe<Scalars['Int']>;
+  form?: Maybe<Form>;
+  formAnswer?: Maybe<Answer>;
+  forms?: Maybe<Array<Form>>;
+  formsCount?: Maybe<Scalars['Int']>;
   keystone: KeystoneMeta;
   me?: Maybe<User>;
   message?: Maybe<Message>;
@@ -895,6 +1153,24 @@ export type Query = {
 };
 
 
+export type QueryAnswerArgs = {
+  where: AnswerWhereUniqueInput;
+};
+
+
+export type QueryAnswersArgs = {
+  orderBy?: Array<AnswerOrderByInput>;
+  skip?: Scalars['Int'];
+  take?: InputMaybe<Scalars['Int']>;
+  where?: AnswerWhereInput;
+};
+
+
+export type QueryAnswersCountArgs = {
+  where?: AnswerWhereInput;
+};
+
+
 export type QueryCommentArgs = {
   where: CommentWhereUniqueInput;
 };
@@ -910,6 +1186,29 @@ export type QueryCommentsArgs = {
 
 export type QueryCommentsCountArgs = {
   where?: CommentWhereInput;
+};
+
+
+export type QueryFormArgs = {
+  where: FormWhereUniqueInput;
+};
+
+
+export type QueryFormAnswerArgs = {
+  formId?: InputMaybe<Scalars['String']>;
+};
+
+
+export type QueryFormsArgs = {
+  orderBy?: Array<FormOrderByInput>;
+  skip?: Scalars['Int'];
+  take?: InputMaybe<Scalars['Int']>;
+  where?: FormWhereInput;
+};
+
+
+export type QueryFormsCountArgs = {
+  where?: FormWhereInput;
 };
 
 
@@ -1208,15 +1507,22 @@ export type TagWhereUniqueInput = {
 
 export type User = {
   __typename?: 'User';
+  answers?: Maybe<Array<Answer>>;
+  answersCount?: Maybe<Scalars['Int']>;
+  approved?: Maybe<Scalars['String']>;
   avatar?: Maybe<Scalars['String']>;
   comments?: Maybe<Array<Comment>>;
   commentsCount?: Maybe<Scalars['Int']>;
   createdAt?: Maybe<Scalars['DateTime']>;
   email?: Maybe<Scalars['String']>;
   firstname?: Maybe<Scalars['String']>;
+  forms?: Maybe<Array<Form>>;
+  formsCount?: Maybe<Scalars['Int']>;
   gender?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
   lastname?: Maybe<Scalars['String']>;
+  level?: Maybe<Scalars['Int']>;
+  phoneNumber?: Maybe<Scalars['String']>;
   picture?: Maybe<Scalars['JSON']>;
   posts?: Maybe<Array<Post>>;
   postsCount?: Maybe<Scalars['Int']>;
@@ -1225,6 +1531,20 @@ export type User = {
   reactionsCount?: Maybe<Scalars['Int']>;
   role?: Maybe<Scalars['String']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
+  verified?: Maybe<Scalars['Boolean']>;
+};
+
+
+export type UserAnswersArgs = {
+  orderBy?: Array<AnswerOrderByInput>;
+  skip?: Scalars['Int'];
+  take?: InputMaybe<Scalars['Int']>;
+  where?: AnswerWhereInput;
+};
+
+
+export type UserAnswersCountArgs = {
+  where?: AnswerWhereInput;
 };
 
 
@@ -1238,6 +1558,19 @@ export type UserCommentsArgs = {
 
 export type UserCommentsCountArgs = {
   where?: CommentWhereInput;
+};
+
+
+export type UserFormsArgs = {
+  orderBy?: Array<FormOrderByInput>;
+  skip?: Scalars['Int'];
+  take?: InputMaybe<Scalars['Int']>;
+  where?: FormWhereInput;
+};
+
+
+export type UserFormsCountArgs = {
+  where?: FormWhereInput;
 };
 
 
@@ -1267,29 +1600,39 @@ export type UserReactionsCountArgs = {
 };
 
 export type UserCreateInput = {
+  answers?: InputMaybe<AnswerRelateToManyForCreateInput>;
+  approved?: InputMaybe<Scalars['String']>;
   comments?: InputMaybe<CommentRelateToManyForCreateInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   email?: InputMaybe<Scalars['String']>;
   firstname?: InputMaybe<Scalars['String']>;
+  forms?: InputMaybe<FormRelateToManyForCreateInput>;
   gender?: InputMaybe<Scalars['String']>;
   lastname?: InputMaybe<Scalars['String']>;
+  level?: InputMaybe<Scalars['Int']>;
+  phoneNumber?: InputMaybe<Scalars['String']>;
   picture?: InputMaybe<Scalars['JSON']>;
   posts?: InputMaybe<PostRelateToManyForCreateInput>;
   providers?: InputMaybe<Scalars['JSON']>;
   reactions?: InputMaybe<ReactionRelateToManyForCreateInput>;
   role?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
+  verified?: InputMaybe<Scalars['Boolean']>;
 };
 
 export type UserOrderByInput = {
+  approved?: InputMaybe<OrderDirection>;
   createdAt?: InputMaybe<OrderDirection>;
   email?: InputMaybe<OrderDirection>;
   firstname?: InputMaybe<OrderDirection>;
   gender?: InputMaybe<OrderDirection>;
   id?: InputMaybe<OrderDirection>;
   lastname?: InputMaybe<OrderDirection>;
+  level?: InputMaybe<OrderDirection>;
+  phoneNumber?: InputMaybe<OrderDirection>;
   role?: InputMaybe<OrderDirection>;
   updatedAt?: InputMaybe<OrderDirection>;
+  verified?: InputMaybe<OrderDirection>;
 };
 
 export type UserRelateToOneForCreateInput = {
@@ -1309,35 +1652,47 @@ export type UserUpdateArgs = {
 };
 
 export type UserUpdateInput = {
+  answers?: InputMaybe<AnswerRelateToManyForUpdateInput>;
+  approved?: InputMaybe<Scalars['String']>;
   comments?: InputMaybe<CommentRelateToManyForUpdateInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   email?: InputMaybe<Scalars['String']>;
   firstname?: InputMaybe<Scalars['String']>;
+  forms?: InputMaybe<FormRelateToManyForUpdateInput>;
   gender?: InputMaybe<Scalars['String']>;
   lastname?: InputMaybe<Scalars['String']>;
+  level?: InputMaybe<Scalars['Int']>;
+  phoneNumber?: InputMaybe<Scalars['String']>;
   picture?: InputMaybe<Scalars['JSON']>;
   posts?: InputMaybe<PostRelateToManyForUpdateInput>;
   providers?: InputMaybe<Scalars['JSON']>;
   reactions?: InputMaybe<ReactionRelateToManyForUpdateInput>;
   role?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
+  verified?: InputMaybe<Scalars['Boolean']>;
 };
 
 export type UserWhereInput = {
   AND?: InputMaybe<Array<UserWhereInput>>;
   NOT?: InputMaybe<Array<UserWhereInput>>;
   OR?: InputMaybe<Array<UserWhereInput>>;
+  answers?: InputMaybe<AnswerManyRelationFilter>;
+  approved?: InputMaybe<StringFilter>;
   comments?: InputMaybe<CommentManyRelationFilter>;
   createdAt?: InputMaybe<DateTimeNullableFilter>;
   email?: InputMaybe<StringFilter>;
   firstname?: InputMaybe<StringFilter>;
+  forms?: InputMaybe<FormManyRelationFilter>;
   gender?: InputMaybe<StringNullableFilter>;
   id?: InputMaybe<IdFilter>;
   lastname?: InputMaybe<StringFilter>;
+  level?: InputMaybe<IntNullableFilter>;
+  phoneNumber?: InputMaybe<StringFilter>;
   posts?: InputMaybe<PostManyRelationFilter>;
   reactions?: InputMaybe<ReactionManyRelationFilter>;
   role?: InputMaybe<StringFilter>;
   updatedAt?: InputMaybe<DateTimeNullableFilter>;
+  verified?: InputMaybe<BooleanFilter>;
 };
 
 export type UserWhereUniqueInput = {
@@ -1372,14 +1727,46 @@ export type SigninWithGithubMutationVariables = Exact<{
 
 export type SigninWithGithubMutation = { __typename?: 'Mutation', signinWithGithub?: { __typename?: 'SigninResult', accessToken?: string | null, user?: { __typename?: 'User', id: string, firstname?: string | null, lastname?: string | null, avatar?: string | null, gender?: string | null, role?: string | null, createdAt?: any | null, email?: string | null } | null } | null };
 
+export type CreateFormMutationVariables = Exact<{
+  data: FormCreateInput;
+}>;
+
+
+export type CreateFormMutation = { __typename?: 'Mutation', createForm?: { __typename?: 'Form', id: string, user?: { __typename?: 'User', id: string } | null } | null };
+
+export type CreateAnswerMutationVariables = Exact<{
+  data: AnswerCreateInput;
+}>;
+
+
+export type CreateAnswerMutation = { __typename?: 'Mutation', createAnswer?: { __typename?: 'Answer', data?: any | null, id: string, createdAt?: any | null, form?: { __typename?: 'Form', id: string } | null } | null };
+
 export type MeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type MeQuery = { __typename?: 'Query', me?: { __typename?: 'User', id: string, firstname?: string | null, lastname?: string | null, avatar?: string | null, gender?: string | null, role?: string | null, createdAt?: any | null, email?: string | null } | null };
+export type MeQuery = { __typename?: 'Query', me?: { __typename?: 'User', id: string, firstname?: string | null, lastname?: string | null, avatar?: string | null, gender?: string | null, role?: string | null, createdAt?: any | null, email?: string | null, verified?: boolean | null, approved?: string | null } | null };
+
+export type FormQueryVariables = Exact<{
+  where: FormWhereUniqueInput;
+}>;
+
+
+export type FormQuery = { __typename?: 'Query', form?: { __typename?: 'Form', id: string, data?: any | null, createdAt?: any | null, user?: { __typename?: 'User', id: string, verified?: boolean | null, approved?: string | null } | null, answer?: { __typename?: 'Answer', id: string, data?: any | null, createdAt?: any | null } | null } | null };
+
+export type FormAnswerQueryVariables = Exact<{
+  formId?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type FormAnswerQuery = { __typename?: 'Query', formAnswer?: { __typename?: 'Answer', id: string, data?: any | null, createdAt?: any | null, form?: { __typename?: 'Form', id: string, data?: any | null } | null } | null };
 
 
 export const ContactUsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"ContactUs"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"data"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"MessageCreateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createMessage"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"data"},"value":{"kind":"Variable","name":{"kind":"Name","value":"data"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"message"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]} as unknown as DocumentNode<ContactUsMutation, ContactUsMutationVariables>;
 export const SubscribeToNewsletterDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"SubscribeToNewsletter"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"data"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"NewsletterSubscriptionCreateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createNewsletterSubscription"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"data"},"value":{"kind":"Variable","name":{"kind":"Name","value":"data"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}}]}}]}}]} as unknown as DocumentNode<SubscribeToNewsletterMutation, SubscribeToNewsletterMutationVariables>;
 export const SigninWithGoogleDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"SigninWithGoogle"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"accessToken"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"signinWithGoogle"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"accessToken"},"value":{"kind":"Variable","name":{"kind":"Name","value":"accessToken"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"accessToken"}},{"kind":"Field","name":{"kind":"Name","value":"user"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}},{"kind":"Field","name":{"kind":"Name","value":"avatar"}},{"kind":"Field","name":{"kind":"Name","value":"gender"}},{"kind":"Field","name":{"kind":"Name","value":"role"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"email"}}]}}]}}]}}]} as unknown as DocumentNode<SigninWithGoogleMutation, SigninWithGoogleMutationVariables>;
 export const SigninWithGithubDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"SigninWithGithub"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"code"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"signinWithGithub"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"code"},"value":{"kind":"Variable","name":{"kind":"Name","value":"code"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"accessToken"}},{"kind":"Field","name":{"kind":"Name","value":"user"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}},{"kind":"Field","name":{"kind":"Name","value":"avatar"}},{"kind":"Field","name":{"kind":"Name","value":"gender"}},{"kind":"Field","name":{"kind":"Name","value":"role"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"email"}}]}}]}}]}}]} as unknown as DocumentNode<SigninWithGithubMutation, SigninWithGithubMutationVariables>;
-export const MeDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Me"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"me"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}},{"kind":"Field","name":{"kind":"Name","value":"avatar"}},{"kind":"Field","name":{"kind":"Name","value":"gender"}},{"kind":"Field","name":{"kind":"Name","value":"role"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"email"}}]}}]}}]} as unknown as DocumentNode<MeQuery, MeQueryVariables>;
+export const CreateFormDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateForm"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"data"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"FormCreateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createForm"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"data"},"value":{"kind":"Variable","name":{"kind":"Name","value":"data"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"user"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}}]} as unknown as DocumentNode<CreateFormMutation, CreateFormMutationVariables>;
+export const CreateAnswerDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateAnswer"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"data"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"AnswerCreateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createAnswer"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"data"},"value":{"kind":"Variable","name":{"kind":"Name","value":"data"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"form"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}}]}}]}}]} as unknown as DocumentNode<CreateAnswerMutation, CreateAnswerMutationVariables>;
+export const MeDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Me"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"me"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}},{"kind":"Field","name":{"kind":"Name","value":"avatar"}},{"kind":"Field","name":{"kind":"Name","value":"gender"}},{"kind":"Field","name":{"kind":"Name","value":"role"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"verified"}},{"kind":"Field","name":{"kind":"Name","value":"approved"}}]}}]}}]} as unknown as DocumentNode<MeQuery, MeQueryVariables>;
+export const FormDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Form"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"where"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"FormWhereUniqueInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"form"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"Variable","name":{"kind":"Name","value":"where"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"data"}},{"kind":"Field","name":{"kind":"Name","value":"user"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"verified"}},{"kind":"Field","name":{"kind":"Name","value":"approved"}}]}},{"kind":"Field","name":{"kind":"Name","value":"answer"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"data"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}}]}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}}]}}]}}]} as unknown as DocumentNode<FormQuery, FormQueryVariables>;
+export const FormAnswerDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"FormAnswer"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"formId"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"formAnswer"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"formId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"formId"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"data"}},{"kind":"Field","name":{"kind":"Name","value":"form"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"data"}}]}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}}]}}]}}]} as unknown as DocumentNode<FormAnswerQuery, FormAnswerQueryVariables>;

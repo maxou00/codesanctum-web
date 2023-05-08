@@ -4,6 +4,7 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
+    "./forms/**/*.{js,ts,jsx,tsx}",
   ],
   darkMode: "class",
   theme: {
@@ -25,6 +26,18 @@ module.exports = {
       },
       primary: "#FF7F50",
       yellow: "#FBB040",
+      red: {
+        50: '#ffe1e1',
+        100: '#ffb1b1',
+        200: '#ff7f7f',
+        300: '#ff4c4c',
+        400: '#ff1a1a',
+        500: '#e60000',
+        600: '#b40000',
+        700: '#810000',
+        800: '#500000',
+        900: '#210000',
+      },
       "body-color": "#959CB1",
     },
     screens: {

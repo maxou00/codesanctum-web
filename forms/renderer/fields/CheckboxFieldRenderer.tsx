@@ -26,26 +26,22 @@ export function CheckboxFieldRenderer(props: FieldRendererProps) {
   );
 
   return (
-    <div className="w-full py-1">
-      <div className="w-full flex flex-col">
-        {props.question.options.map((o: any) => {
-          let isActive = answers.includes(o.value);
+    <div className="flex w-full flex-col">
+      {props.question.options.map((o: any) => {
+        let isActive = answers.includes(o.value);
 
-          return (
-            <input
-              type="checkbox"
-              key={o.key}
-              value={isActive}
-              checked={isActive}
-              onChange={(ev) =>
-                onCheckChange(o.value, ev.currentTarget.checked)
-              }
-            >
-              {o.label || o.description || o.value}
-            </input>
-          );
-        })}
-      </div>
+        return (
+          <input
+            type="checkbox"
+            key={o.key}
+            value={isActive}
+            checked={isActive}
+            onChange={(ev) => onCheckChange(o.value, ev.currentTarget.checked)}
+          >
+            {o.label || o.description || o.value}
+          </input>
+        );
+      })}
     </div>
   );
 }

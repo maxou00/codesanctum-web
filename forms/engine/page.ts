@@ -1,11 +1,17 @@
 import { nanoid } from "nanoid";
 import { ContentField } from "./fields";
 
+
+interface FormStyles {
+    theme: "dark" | "light";
+}
+
 export interface FormPage {
     key: string;
     title: string;
     description: string;
     fields: ContentField[];
+    styles?: FormStyles;
 }
 
 export function initialPage(overrides: Partial<FormPage> = {}): FormPage {

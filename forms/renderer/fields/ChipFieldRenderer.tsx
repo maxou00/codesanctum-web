@@ -37,7 +37,7 @@ export function ChipFieldRenderer(props: FieldRendererProps<ChipField>) {
   );
 
   return (
-    <div className="w-full py-1">
+    <div className="w-full">
       {props.question.options.map((o) => {
         let isActive = false;
         if (props.response?.answer) {

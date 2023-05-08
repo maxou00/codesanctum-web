@@ -10,7 +10,7 @@ export function RadioFieldRenderer(props: FieldRendererProps) {
   );
 
   return (
-    <div className="w-full py-1">
+    <div className="w-full">
       <div className="flex flex-col items-center justify-start">
         {props.question.options.map((o: any) => {
           return (

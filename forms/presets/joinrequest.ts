@@ -64,6 +64,9 @@ export function JoinRequest() {
 export const JoinRequestForm: FormPage = {
     key: "joinRequestForm",
     title: "Tell us more about you",
-    description: "We would like to know you more to personalize your experience",
-    fields: JoinRequest()
+    description: "Please answer the questions below.\nWe would like to know you more to personalize your experience, wherever possible.",
+    fields: JoinRequest(),
+    styles: {
+        theme: "dark"
+    }
 }

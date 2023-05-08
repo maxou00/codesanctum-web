@@ -1,14 +1,21 @@
-import { FormPage } from "../engine/page";
-import { FilterFormAction } from "./actions";
+import { FormPage, ResponsePage } from "../engine/page";
+import { FormAction } from "./actions";
 
-function setFormPage(form: FormPage): FilterFormAction {
+function setFormPage(form: FormPage): FormAction {
     return {
         type: "SET_FORM_PAGE",
         form
     }
 }
 
-function appendAnswer(questionId: string, answer: any): FilterFormAction {
+function initResponse(responsePage: ResponsePage): FormAction {
+    return {
+        type: "INIT_RESPONSE",
+        response: responsePage
+    }
+}
+
+function appendAnswer(questionId: string, answer: any): FormAction {
     return {
         type: 'APPEND_ANSWER',
         questionId,
@@ -16,7 +23,7 @@ function appendAnswer(questionId: string, answer: any): FilterFormAction {
     }
 }
 
-function appendAnswerError(questionId: string, error: any): FilterFormAction {
+function appendAnswerError(questionId: string, error: any): FormAction {
     return {
         type: 'APPEND_ANSWER_ERROR',
         questionId,
@@ -24,7 +31,7 @@ function appendAnswerError(questionId: string, error: any): FilterFormAction {
     }
 }
 
-function resetResponse(): FilterFormAction {
+function resetResponse(): FormAction {
     return {
         type: 'RESET_RESPONSE'
     }
@@ -32,6 +39,7 @@ function resetResponse(): FilterFormAction {
 
 export const FilterActions = {
     setFormPage,
+    initResponse,
     appendAnswer,
     appendAnswerError,
     resetResponse

@@ -6,7 +6,7 @@ import { MUTATION_SIGNIN_WITH_GITHUB, MUTATION_SIGNIN_WITH_GOOGLE } from "@/core
 
 interface UserState {
     isLoading: boolean;
-    user?: any;
+    user?: MeQuery['me'];
     refresh: () => Promise<void>;
     loginWithGoogle: (accessToken: string) => Promise<void>;
     loginWithGithub: (code: string) => Promise<void>;

@@ -4,16 +4,16 @@ import {
   FilterActions,
 } from "./creator";
 import {
-  initialFilterFormState,
-  reduceFilterFormState,
+  initialFormState,
+  reduceFormState,
 } from "./reducers/collection";
 
-function useCreateFormState(scheme: FormPage) {
+function useCreateFormState(scheme: FormPage, initialResponse: ResponsePage | undefined = undefined) {
   const [state, dispatch] = useReducer(
-    reduceFilterFormState,
+    reduceFormState,
     {
-      ...initialFilterFormState,
-      form: scheme || initialFilterFormState.form
+      ...initialFormState,
+      form: scheme || initialFormState.form
     }
   );
 
@@ -45,6 +45,12 @@ function useCreateFormState(scheme: FormPage) {
     []
   );
 
+  useEffect(() => {
+    if(initialResponse) {
+      dispatch(FilterActions.initResponse(initialResponse));
+    }
+  }, []);
+
   return {
     ...state,
     dispatch,
@@ -71,15 +77,17 @@ export function useCollectionForm() {
 
 export type FormProviderProps = {
   scheme: FormPage;
+  defaultResponse?: ResponsePage;
   onResponseChange?: (response: ResponsePage) => void;
 }
 
 export const FormProvider = ({
   children,
   scheme,
-  onResponseChange
+  onResponseChange,
+  defaultResponse
 }: PropsWithChildren<FormProviderProps>) => {
-  const formState = useCreateFormState(scheme);
+  const formState = useCreateFormState(scheme, defaultResponse);
 
   useEffect(() => {
     if(onResponseChange) {

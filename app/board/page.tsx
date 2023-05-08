@@ -1,30 +1,64 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
-/* eslint-disable @next/next/no-img-element */
-import { JoinRequestForm } from "@/forms/presets/joinrequest";
-import { FormRenderer } from "@/forms/renderer/FormRenderer";
-import { FormProvider } from "@/forms/state/context";
+import JoinCohortRequest from "@/components/JoinCohortRequest";
+import { JOIN_REQUEST_FORM_ID } from "@/core";
+import {
+  CreateAnswerMutation,
+  CreateAnswerMutationVariables,
+  FormAnswerQuery,
+  FormAnswerQueryVariables,
+} from "@/core/gql/graphql";
+import { MUTATION_CREATE_ANSWER } from "@/core/mutations";
+import { GET_FORM_ANSWER } from "@/core/queries";
+import useFormByID from "@/hooks/useFormByID";
+import { useJoinRequest } from "@/state/useJoinRequest";
 import { useIdentity } from "@/state/user";
+import { useMutation, useQuery } from "@apollo/client";
+import { useEffect } from "react";
 
 export default function AppDashboard() {
   const identity = useIdentity();
+  const joinRequest = useJoinRequest();
+
   return (
-    <div className="flex w-full flex-col items-start justify-start">
-      <div className="flex flex-row items-center justify-start gap-4">
-        <img
-          src={identity.user!.avatar}
-          alt=""
-          className="h-24 w-24 rounded-full"
-        />
-        <div className="flex flex-col items-start justify-start gap-0 dark:text-white">
-          <span>
-            {identity.user!.firstname} {identity.user!.lastname}
-          </span>
-          <span className="text-sm opacity-40">{identity.user!.email}</span>
-        </div>
+    <div className="flex w-full flex-col items-center justify-start">
+      <div className="w-[640px] max-md:w-full">
+        {!joinRequest.isLoading &&
+          joinRequest.form?.answer &&
+          !identity.user.approved && (
+            <div className="flex min-h-screen w-full flex-col items-center justify-center gap-8 dark:text-white">
+              <h4 className="text-center font-heading text-3xl">
+                Hey there, we're reviewing your profile!
+              </h4>
+              <p className="opacity-50">
+                Hey, thanks for submitting your profile! <br />
+                <br /> We're super excited to get to know you better and learn
+                about your coding skills. Just give us a little time to review
+                everything and see if you're the perfect fit for our cohort.
+                <br />
+                <br />
+                Guardians are carefully going through your profile. We can't
+                wait to see your motivations, goals, and programming experience.
+                Don't worry, we won't take too long, but we want to make sure we
+                make the right choice for this incredible journey!
+                <br />
+                <br />
+                So hang tight, stick around, and get ready to hear from us soon.
+                In the meantime, keep preparing yourself for this exciting
+                adventure, knowing that The Sanctuary is getting a seat ready
+                for you.
+                <br />
+                <br />
+                See you around!
+              </p>
+            </div>
+          )}
       </div>
-      <FormProvider scheme={JoinRequestForm}>
-        <FormRenderer />
-      </FormProvider>
+      {!joinRequest.isLoading && !joinRequest.form?.answer && (
+        <div className="w-[640px] rounded-md bg-dark p-8 max-md:w-full">
+          <JoinCohortRequest />
+        </div>
+      )}
     </div>
   );
 }

@@ -1,8 +1,13 @@
-import { FormPage } from "../engine/page";
+import { FormPage, ResponsePage } from "../engine/page";
 
 interface SetFormPage {
     type: 'SET_FORM_PAGE',
     form: FormPage;
+}
+
+interface InitReponse {
+    type: "INIT_RESPONSE",
+    response: ResponsePage;
 }
 
 interface AppendAnswer {
@@ -21,4 +26,4 @@ interface ResetResponse {
     type: 'RESET_RESPONSE'
 }
 
-export type FilterFormAction = SetFormPage | AppendAnswer | AppendAnswerError | ResetResponse;
+export type FormAction = SetFormPage | InitReponse | AppendAnswer | AppendAnswerError | ResetResponse;

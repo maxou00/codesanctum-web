@@ -1,9 +1,9 @@
-import { FilterFormState } from "..";
+import { FormState } from "..";
 import { initialPage } from "../../engine/page";
-import { FilterFormAction } from "../actions";
+import { FormAction } from "../actions";
 import produce from "immer"
 
-export const initialFilterFormState: FilterFormState = {
+export const initialFormState: FormState = {
     form: initialPage(),
     response: {
         fieldAnswers: [],
@@ -11,7 +11,7 @@ export const initialFilterFormState: FilterFormState = {
     },
 };
 
-export function reduceFilterFormState(state: FilterFormState = initialFilterFormState, action: FilterFormAction): FilterFormState {
+export function reduceFormState(state: FormState = initialFormState, action: FormAction): FormState {
     return produce(state, (draft) => {
         switch (action.type) {
             case 'SET_FORM_PAGE': {
@@ -31,6 +31,17 @@ export function reduceFilterFormState(state: FilterFormState = initialFilterForm
                         }
                     })
                 }
+                return draft;
+            }
+            case "INIT_RESPONSE": {
+                let answers = [...action.response.fieldAnswers];
+                draft.response.fieldAnswers.forEach((f) => {
+                    let exists = answers.find((f2) => f2.questionId === f.questionId);
+                    if(!exists) {
+                        answers.push(f);
+                    }
+                }),
+                draft.response.fieldAnswers =  answers;
                 return draft;
             }
             /////ONGOING

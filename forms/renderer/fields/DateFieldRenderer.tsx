@@ -23,7 +23,7 @@ export function DateFieldRenderer(
   );
 
   return (
-    <div className="w-full py-1">
+    <div className="w-full">
       <input
         type={props.question.format === "datetime" ? "datetime-local" : "date"}
         className="h-56 w-full rounded"

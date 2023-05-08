@@ -12,9 +12,9 @@ export function TimeFieldRenderer(props: FieldRendererProps) {
   );
 
   return (
-    <div className="w-full py-1">
+    <div className="w-full">
       <input
-        className="border-1 w-full rounded border py-1"
+        className="w-full rounded-md border py-1"
         type="time"
         value={props.response?.answer}
         placeholder={props.question.title}

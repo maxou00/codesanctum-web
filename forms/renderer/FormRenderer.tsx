@@ -13,7 +13,7 @@ export function FormRenderer(props: { preview?: boolean }) {
     <RenderingModeContext.Provider
       value={{ mode: props.preview ? "preview" : "live" }}
     >
-      <div className="w-full">
+      <div className="w-full dark:text-white">
         <PageRenderer />
       </div>
     </RenderingModeContext.Provider>

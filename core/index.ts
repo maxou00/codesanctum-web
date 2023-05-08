@@ -36,3 +36,5 @@ export const client = new ApolloClient({
     link: authLink.concat(httpLink),
     cache: new InMemoryCache()
 })
+
+export const JOIN_REQUEST_FORM_ID = "9b7b1c28-0df8-4196-addf-d0c2e75faf26";

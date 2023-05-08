@@ -19,8 +19,9 @@ export function GithubSigninButton() {
   useEffect(() => {
     let oauth = params.get("oauth");
     let code = params.get("code");
-    if(code && oauth === "github") {
-        signinFn(code);
+    if (code && oauth === "github") {
+      console.log("Signin with github code ", code);
+      signinFn(code);
     }
   }, [params]);
 

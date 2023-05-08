@@ -58,3 +58,27 @@ mutation SigninWithGithub($code: String) {
   }
 }
 `;
+
+export const MUTATION_CREATE_FORM = gql`
+mutation CreateForm($data: FormCreateInput!) {
+  createForm(data: $data) {
+    id
+    user {
+      id
+    }
+  }
+}
+`
+
+export const MUTATION_CREATE_ANSWER = gql`
+mutation CreateAnswer($data: AnswerCreateInput!) {
+  createAnswer(data: $data) {
+    data
+    id
+    form {
+      id
+    }
+    createdAt
+  }
+}
+`;

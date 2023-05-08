@@ -12,7 +12,7 @@ export function NumberFieldRenderer(props: FieldRendererProps) {
   );
 
   return (
-    <div className="py-1">
+    <div className="w-full">
       <input
         type="number"
         value={props.response?.answer}
