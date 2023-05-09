@@ -1,8 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import { GithubSigninButton } from "@/components/Common/GithubSignin";
 import { GoogleSigninButton } from "@/components/Common/GoogleSignin";
-import { useGoogleLogin } from "@react-oauth/google";
-import Link from "next/link";
 
 export const metadata = {
   title: "Secure Access to the Sanctuary",
