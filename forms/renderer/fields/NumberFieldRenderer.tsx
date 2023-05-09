@@ -1,4 +1,3 @@
-import { Box, Input } from "@chakra-ui/react";
 import { useCallback } from "react";
 import { FieldRendererProps } from ".";
 

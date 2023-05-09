@@ -1,4 +1,3 @@
-import { Box, Input } from "@chakra-ui/react";
 import { useCallback, useMemo } from "react";
 import { FieldRendererProps } from ".";
 import { DateField, DateTimeField } from "../../engine/fields";
