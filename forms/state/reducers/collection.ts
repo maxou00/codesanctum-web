@@ -1,7 +1,7 @@
 import { FormState } from "..";
 import { initialPage } from "../../engine/page";
 import { FormAction } from "../actions";
-import produce from "immer"
+import { produce } from "immer"
 
 export const initialFormState: FormState = {
     form: initialPage(),
@@ -23,7 +23,7 @@ export function reduceFormState(state: FormState = initialFormState, action: For
                             answer: undefined
                         }
                     }),
-    
+
                     fieldErrors: action.form.fields.map((f) => {
                         return {
                             questionId: f.key,
@@ -37,11 +37,11 @@ export function reduceFormState(state: FormState = initialFormState, action: For
                 let answers = [...action.response.fieldAnswers];
                 draft.response.fieldAnswers.forEach((f) => {
                     let exists = answers.find((f2) => f2.questionId === f.questionId);
-                    if(!exists) {
+                    if (!exists) {
                         answers.push(f);
                     }
                 }),
-                draft.response.fieldAnswers =  answers;
+                    draft.response.fieldAnswers = answers;
                 return draft;
             }
             /////ONGOING
@@ -54,7 +54,7 @@ export function reduceFormState(state: FormState = initialFormState, action: For
                             answer: undefined
                         }
                     }),
-    
+
                     fieldErrors: draft.form.fields.map((f) => {
                         return {
                             questionId: f.key,
@@ -84,9 +84,9 @@ export function reduceFormState(state: FormState = initialFormState, action: For
                 }
                 return draft;
             }
-            
-            default: 
+
+            default:
                 return draft;
-        } 
+        }
     });
 }

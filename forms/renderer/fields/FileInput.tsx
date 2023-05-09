@@ -4,20 +4,12 @@ import { ChangeEvent, useCallback } from "react";
 import { useRef } from "react";
 import { MdAdd, MdClose, MdFileUpload } from "react-icons/md";
 import { FcFile } from "react-icons/fc";
-import {
-  Box,
-  Heading,
-  IconButton,
-  Text,
-  theme,
-  useTheme,
-} from "@chakra-ui/react";
 
 const styles: { [key: string]: CSSProperties } = {
   dropZone: {
     margin: "4px 8px",
     borderRadius: "4px",
-    border: `1px solid ${theme.colors.blue[100]}`,
+    border: `1px solid #2196f3`,
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
@@ -48,8 +40,6 @@ interface FileInputProps {
 }
 
 export function FileInput(props: FileInputProps) {
-  const theme = useTheme();
-
   const { files } = props;
   const hiddenInput = useRef<HTMLInputElement>();
 
@@ -105,7 +95,7 @@ export function FileInput(props: FileInputProps) {
       <div style={styles.dropZone}>
         {files.length === 0 && (
           <div onClick={onAppendFile}>
-            <MdFileUpload size={64} color={theme.colors.blue[300]} />
+            <MdFileUpload size={64} color={`#2196f3`} />
           </div>
         )}
         {files.map((f, i) => {
