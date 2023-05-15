@@ -1,9 +1,9 @@
 import { useCallback } from "react";
 import { FieldRendererProps } from ".";
-import { ChipField } from "../../engine/fields";
 import { X } from "phosphor-react";
+import CsForms from "@themx05/csforms";
 
-export function ChipFieldRenderer(props: FieldRendererProps<ChipField>) {
+export function ChipFieldRenderer(props: FieldRendererProps<CsForms.Engine.ChipField>) {
   const onChipClicked = useCallback(
     (value: string) => {
       /// handle click by either adding the value to answers or removing it.

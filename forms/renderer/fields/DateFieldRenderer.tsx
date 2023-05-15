@@ -1,9 +1,9 @@
 import { useCallback, useMemo } from "react";
 import { FieldRendererProps } from ".";
-import { DateField, DateTimeField } from "../../engine/fields";
+import CsForms from "@themx05/csforms";
 
 export function DateFieldRenderer(
-  props: FieldRendererProps<DateField | DateTimeField>
+  props: FieldRendererProps<CsForms.Engine.DateField | CsForms.Engine.DateTimeField>
 ) {
   const value = useMemo(() => {
     if (props.response?.answer) {

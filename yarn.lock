@@ -1314,6 +1314,14 @@
   dependencies:
     defer-to-connect "^2.0.0"
 
+"@themx05/csforms@1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@themx05/csforms/-/csforms-1.0.2.tgz#da01e03db24d870f4ce968676cefe9c9d6c7ccb1"
+  integrity sha512-hRTd2kZIvTFmDP6I8hJdqXPWAErKU3nCKxWh4iaL9Km8NPLA+Uj0uCYGyq+R4RpIY3Wx67mnmdexx/gxQi4RgQ==
+  dependencies:
+    nanoid "3.3.4"
+    zod "^3.21.4"
+
 "@tootallnate/once@2":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@tootallnate/once/-/once-2.0.0.tgz#f544a148d3ab35801c1f633a7441fd87c2e484bf"
@@ -5981,6 +5989,11 @@ nanoid@3.3.3:
   version "3.3.3"
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.3.tgz#fd8e8b7aa761fe807dba2d1b98fb7241bb724a25"
   integrity sha512-p1sjXuopFs0xg+fPASzQ28agW1oHD7xDsd9Xkf3T15H3c/cifrFHVwrh74PdoklAPi+i7MdRsE47vm2r6JoB+w==
+
+nanoid@3.3.4:
+  version "3.3.4"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.4.tgz#730b67e3cd09e2deacf03c027c81c9d9dbc5e8ab"
+  integrity sha512-MqBkQh/OHTS2egovRtLk45wEyNXwF+cokD+1YPf9u5VfJiRdAiRwB2froX5Co9Rh20xs4siNPm8naNotSD6RBw==
 
 nanoid@^3.3.4, nanoid@^3.3.6:
   version "3.3.6"

@@ -1,11 +1,11 @@
 import { useMemo } from "react";
 import { useCallback } from "react";
 import { FieldRendererProps } from ".";
-import { Field, FileConstraints } from "../../engine/fields";
 import { FileInput } from "./FileInput";
+import CsForms from "@themx05/csforms";
 
 export function FileFieldRenderer(
-  props: FieldRendererProps<Field<FileConstraints>>
+  props: FieldRendererProps<CsForms.Engine.Field<CsForms.Engine.FileConstraints>>
 ) {
   const realFormats = useMemo(() => {
     let formats = props.question.formats;

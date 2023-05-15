@@ -1,4 +1,4 @@
-import { FormPage, ResponsePage } from "../engine/page";
+import { FormPage, ResponsePage } from "@themx05/csforms/lib/engine";
 import { FormAction } from "./actions";
 
 function setFormPage(form: FormPage): FormAction {

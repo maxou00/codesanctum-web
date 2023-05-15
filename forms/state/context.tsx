@@ -1,5 +1,4 @@
 import { createContext, PropsWithChildren, useCallback, useContext, useEffect, useReducer } from "react";
-import { FormPage, ResponsePage } from "../engine/page";
 import {
   FilterActions,
 } from "./creator";
@@ -7,8 +6,9 @@ import {
   initialFormState,
   reduceFormState,
 } from "./reducers/collection";
+import CsForms from "@themx05/csforms";
 
-function useCreateFormState(scheme: FormPage, initialResponse: ResponsePage | undefined = undefined) {
+function useCreateFormState(scheme: CsForms.Engine.FormPage, initialResponse: CsForms.Engine.ResponsePage | undefined = undefined) {
   const [state, dispatch] = useReducer(
     reduceFormState,
     {
@@ -76,9 +76,9 @@ export function useCollectionForm() {
 }
 
 export type FormProviderProps = {
-  scheme: FormPage;
-  defaultResponse?: ResponsePage;
-  onResponseChange?: (response: ResponsePage) => void;
+  scheme: CsForms.Engine.FormPage;
+  defaultResponse?: CsForms.Engine.ResponsePage;
+  onResponseChange?: (response: CsForms.Engine.ResponsePage) => void;
 }
 
 export const FormProvider = ({
