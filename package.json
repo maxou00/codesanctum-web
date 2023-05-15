@@ -13,7 +13,7 @@
     "@apollo/client": "^3.7.13",
     "@next/font": "13.1.6",
     "@react-oauth/google": "^0.11.0",
-    "@themx05/csforms": "1.0.2",
+    "@themx05/csforms": "^1.0.3",
     "eslint": "8.33.0",
     "eslint-config-next": "13.1.6",
     "graphql": "^16.6.0",

@@ -1314,10 +1314,10 @@
   dependencies:
     defer-to-connect "^2.0.0"
 
-"@themx05/csforms@1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@themx05/csforms/-/csforms-1.0.2.tgz#da01e03db24d870f4ce968676cefe9c9d6c7ccb1"
-  integrity sha512-hRTd2kZIvTFmDP6I8hJdqXPWAErKU3nCKxWh4iaL9Km8NPLA+Uj0uCYGyq+R4RpIY3Wx67mnmdexx/gxQi4RgQ==
+"@themx05/csforms@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@themx05/csforms/-/csforms-1.0.3.tgz#5388574b1aa06b05c2e67dca94b67a9ab6ec579f"
+  integrity sha512-w1pOD/TuK67amah7yesawIYvNGVcawQyQQXNsM/nN60TQZgTS/bWa2WQ6wWLmdkADN/GJu/kPHfa43DjM9N5iQ==
   dependencies:
     nanoid "3.3.4"
     zod "^3.21.4"

@@ -1,13 +1,13 @@
-import { FormPage, ResponsePage } from "../engine/page";
+import CsForms from"@themx05/csforms";
 
 interface SetFormPage {
     type: 'SET_FORM_PAGE',
-    form: FormPage;
+    form: CsForms.Engine.FormPage;
 }
 
 interface InitReponse {
     type: "INIT_RESPONSE",
-    response: ResponsePage;
+    response: CsForms.Engine.ResponsePage;
 }
 
 interface AppendAnswer {

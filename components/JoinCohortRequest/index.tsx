@@ -4,7 +4,6 @@ import {
   CreateAnswerMutationVariables,
 } from "@/core/gql/graphql";
 import { MUTATION_CREATE_ANSWER } from "@/core/mutations";
-import { ResponsePage } from "@/forms/engine/page";
 import { FormRenderer } from "@/forms/renderer/FormRenderer";
 import { FormProvider } from "@/forms/state/context";
 import { useIdentity } from "@/state/user";
@@ -14,13 +13,14 @@ import { useCallback, useId, useState } from "react";
 import Modal from "../Modals/base";
 import { Blocks } from "react-loader-spinner";
 import { toast } from "react-hot-toast";
+import CsForms from "@themx05/csforms";
 import { useJoinRequest } from "@/state/useJoinRequest";
 
 export default function JoinCohortRequest() {
   const identity = useIdentity();
   const joinFormState = useJoinRequest();
 
-  const [joinRequestResponse, setJoinRequestResponse] = useState<ResponsePage>({
+  const [joinRequestResponse, setJoinRequestResponse] = useState<CsForms.Engine.ResponsePage>({
     fieldAnswers: [
       { questionId: "email", answer: identity.user?.email || "" },
       { questionId: "firstname", answer: identity.user?.firstname || "" },
